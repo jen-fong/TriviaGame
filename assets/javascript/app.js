@@ -44,7 +44,7 @@ $(document).ready(function() {
 	]
 	//set global variables, hide certain elements
 	var index = 0; //holds the quiz question #
-	var correct = 0; 
+	var correct = 0;
 	var wrong = 0;
 	var unanswered = 0;
 	var time = 10; //time per question
@@ -105,7 +105,7 @@ $(document).ready(function() {
 			if ($(this).data('choice') === questions[index].correct) {
 				correct++;
 				$('#correct').html('<h3>' + correct + '</h3>');
-				$('.choicesarea').html('Correct! This logo belongs to ' + answer);		
+				$('.choicesarea').html('Correct! This logo belongs to ' + answer);
 				clearInterval(questionCounter); //stop timer
 				time = 10; // reset time
 				index++; // increase index to move to next question in object
@@ -135,8 +135,8 @@ $(document).ready(function() {
 	        $('#show-time').html('<h2>Time remaining for question: ' + time + '</h2>'); 
 	        if (time === 0){
 		        unanswered++;
-				$('#unanswered').html('<h3>' + unanswered + '</h3>');	  
-				$('.choicesarea').html('The correct answer is ' + answer + '!');   
+				$('#unanswered').html('<h3>' + unanswered + '</h3>');
+				$('.choicesarea').html('The correct answer is ' + answer + '!');
 				clearInterval(questionCounter);
 				time = 10;
 				index++;
