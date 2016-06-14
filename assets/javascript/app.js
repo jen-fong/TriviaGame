@@ -57,12 +57,12 @@ $(document).ready(function() {
 
 	//click handler for replay button, need to reset all values to zero for next game
 	$('#replaygame').on('click', function () {
-	    index = 0;
-	    correct = 0;
-	    wrong = 0;
-	    unanswered = 0;
-	    startGame();
-	    $(this).hide();
+		index = 0;
+	    	correct = 0;
+	    	wrong = 0;
+	    	unanswered = 0;
+	    	startGame();
+	    	$(this).hide();
     	});
 
 	// Checks if index is undefined (end of questions array) and display total score 
@@ -137,10 +137,10 @@ $(document).ready(function() {
 		        unanswered++;
 			$('#unanswered').html('<h3>' + unanswered + '</h3>');
 			$('.choicesarea').html('The correct answer is ' + answer + '!');
-				clearInterval(questionCounter);
-				time = 10;
-				index++;
-				nextQuestion();
+			clearInterval(questionCounter);
+			time = 10;
+			index++;
+			nextQuestion();
 	        };	  
 	};
     // delays next question from showing for 3 secs for the correct/incorrect msg to show
