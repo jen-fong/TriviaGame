@@ -63,7 +63,7 @@ $(document).ready(function() {
 	    unanswered = 0;
 	    startGame();
 	    $(this).hide();
-    });
+    	});
 
 	// Checks if index is undefined (end of questions array) and display total score 
 	// Clears quiz space and renders next question with choices. 
@@ -76,8 +76,8 @@ $(document).ready(function() {
 			$('.logo, .choicesarea, #show-time').empty();
 			$('#replaygame').show();
 			var score = '<p>Correct Answers: ' + correct + '</p>' + 
-						'<p>Wrong Answers: ' + wrong + '</p>' +
-						'<p>Unanswered: ' + unanswered + '</p>';	
+					'<p>Wrong Answers: ' + wrong + '</p>' +
+					'<p>Unanswered: ' + unanswered + '</p>';	
 			$('#score').html(score);
 		}; 
 		clearInterval(nextQuestionCounter);
@@ -126,27 +126,27 @@ $(document).ready(function() {
 	// Set the condition if time hits 0 to clear interval, display correct answer. 
 	// Move onto the next question after 3 seconds of diplaying correct/incorrect.
 
-    function runTimer(){
-		questionCounter = setInterval(decreaseTime, 1000);
-    };
-    function decreaseTime(){
-    	time--;
-    	answer = questions[index].choices[questions[index].correct];
-        $('#show-time').html('<h2>Time remaining for question: ' + time + '</h2>'); 
-        if (time === 0){
-	        unanswered++;
-			$('#unanswered').html('<h3>' + unanswered + '</h3>');	  
-			$('.choicesarea').html('The correct answer is ' + answer + '!');   
-			clearInterval(questionCounter);
-			time = 10;
-			index++;
-			nextQuestion();
-        };	  
-    };
+    	function runTimer(){
+    		questionCounter = setInterval(decreaseTime, 1000);
+    	};
+    	function decreaseTime(){
+	    	time--;
+	    	answer = questions[index].choices[questions[index].correct];
+	        $('#show-time').html('<h2>Time remaining for question: ' + time + '</h2>'); 
+	        if (time === 0){
+		        unanswered++;
+				$('#unanswered').html('<h3>' + unanswered + '</h3>');	  
+				$('.choicesarea').html('The correct answer is ' + answer + '!');   
+				clearInterval(questionCounter);
+				time = 10;
+				index++;
+				nextQuestion();
+	        };	  
+	};
     // delays next question from showing for 3 secs for the correct/incorrect msg to show
-    function nextQuestion() {
-    	nextQuestionCounter = setInterval(startGame, 3000);
-    };
+    	function nextQuestion() {
+    		nextQuestionCounter = setInterval(startGame, 3000);
+    	};
 });
 
 
@@ -156,6 +156,6 @@ $(document).ready(function() {
 - fix giant radio buttons
 - make game restart with button click
 - make it look less ugly
-- indent everything properly
+- indent everything properly, questions[index] repeats too much
 - remove this
 */
