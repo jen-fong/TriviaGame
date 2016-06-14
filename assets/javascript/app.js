@@ -40,8 +40,7 @@ $(document).ready(function() {
 			'image': "assets/images/wikipedia.jpg",
 			'choices': ["Dictionary", "Wikipedia", "Britannica", "About"],
 			'correct': 1
-			}
-	]
+			}];
 	//set global variables, hide certain elements
 	var index = 0; //holds the quiz question #
 	var correct = 0;
