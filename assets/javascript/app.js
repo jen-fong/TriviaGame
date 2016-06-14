@@ -1,5 +1,5 @@
 $(document).ready(function() {
-//expand to see questions array	
+//Array holds objects for each question. Answer is set as the index of its location in the array of choices
 	var questions = [{
 			'image': "assets/images/bacardi.jpg",
 			'choices': ["Bacardi", "Johnny Walker", "Smirnoff", "Hennessy"],
@@ -42,13 +42,13 @@ $(document).ready(function() {
 			'correct': 1
 			}
 	]
-	//set global variables
+	//set global variables, hide certain elements
 	var index = 0; //holds the quiz question #
 	var correct = 0; 
 	var wrong = 0;
 	var unanswered = 0;
 	var time = 10; //time per question
-	var questionCounter; //first set interval for questions
+	var questionCounter; //first setInterval for questions
 	var nextQuestionCounter; //second one used for time between displaying correct/incorrect before showing next question
 	var answer;
 
@@ -65,10 +65,12 @@ $(document).ready(function() {
 	    $(this).hide();
     });
 
-	/*Checks if index is undefined (end of questions array) and display total score otherwise
-	clears quiz space and renders next question with choices. Clears the interval for counter2 
-	so additional clicks on choices will not build on each other and increase the speed between 
-	showing each question. Starts timer for question. */	
+	// Checks if index is undefined (end of questions array) and display total score 
+	// Clears quiz space and renders next question with choices. 
+	// Grabs the current question based on the index var.
+	// Clears the interval for nextQuestionCounter so additional clicks on choices will not build on each other and increase 
+	// the speed between showing each question. 
+	// Starts timer for question. 	
 	function startGame() {
 		if (questions[index] === undefined) {		
 			$('.logo, .choicesarea, #show-time').empty();
@@ -79,24 +81,24 @@ $(document).ready(function() {
 			$('#score').html(score);
 		}; 
 		clearInterval(nextQuestionCounter);
-		$('.fadein').hide().fadeIn(1000);
-		$('.logo').html('<img src=' + questions[index].image + ' />'); //append question
+		$('.content').hide().fadeIn(1000);
+		$('.logo').html('<img src=' + questions[index].image + ' />'); //append question/image
 		$('.choicesarea').html(''); 
-		$('#score').html(''); //clears score space from previous area
+		$('#score').html(''); //clears score space from previous game
 		for (var i = 0; i < questions[index].choices.length; i++) {
-			var newDiv = '<div class="choices" data-choice ="' + i + '">';
-			$('.choicesarea').append(newDiv + questions[index].choices[i] + '</div>');
-		}; //append choices
+			var choicesDiv = '<div class="choices" data-choice ="' + i + '">';
+			$('.choicesarea').append(choicesDiv + questions[index].choices[i] + '</div>');
+		}; //append all possible choices
 		runTimer();
 	};
 
 	checkAnswer();
 	 
-	/*Check data value against the correct answer stored in object. Increase correct
-	counter if correct and decrease if wrong. Appends correct/incorrect message for 3 seconds 
-	before next question is shown. Reset timer to 10 seconds. Counter will be cleared to 
-	prevent the function from stacking the count and speed */
-
+	// Check data value against the correct answer stored in object when a choice is clicked. 
+	// Increase correct counter if correct and decrease if wrong. 
+	// Appends correct/incorrect message for 3 seconds before next question is shown. 
+	// Reset timer to 10 seconds. Counter will be cleared to prevent the function from stacking the count and speed 
+ 
 	function checkAnswer() {
 		$('.choicesarea').on('click', '.choices', function() {
 			answer = questions[index].choices[questions[index].correct];
@@ -105,8 +107,8 @@ $(document).ready(function() {
 				$('#correct').html('<h3>' + correct + '</h3>');
 				$('.choicesarea').html('Correct! This logo belongs to ' + answer);		
 				clearInterval(questionCounter); //stop timer
-				time = 10; //reset time
-				index++; //increase index to move to next question in object
+				time = 10; // reset time
+				index++; // increase index to move to next question in object
 				nextQuestion();
 			} else if ($(this).val() !== questions[index].correct) {
 				wrong++;
@@ -120,9 +122,9 @@ $(document).ready(function() {
 		});
 	};
 
-	/*Starts the stopclock and display on webpage. Set the condition if time hits 0 to clear interval,
-	display correct answer, and and move onto the next question after 3 seconds of diplaying 
-	correct/incorrect. */
+	// Starts the stopclock and display on webpage. 
+	// Set the condition if time hits 0 to clear interval, display correct answer. 
+	// Move onto the next question after 3 seconds of diplaying correct/incorrect.
 
     function runTimer(){
 		questionCounter = setInterval(decreaseTime, 1000);
@@ -141,18 +143,19 @@ $(document).ready(function() {
 			nextQuestion();
         };	  
     };
-    //delays next question from showing for 2 secs for the correct/incorrect msg to show
+    // delays next question from showing for 3 secs for the correct/incorrect msg to show
     function nextQuestion() {
-    	nextQuestionCounter = setInterval(startGame, 2000);
+    	nextQuestionCounter = setInterval(startGame, 3000);
     };
 });
 
 
 
 /* Things I need to do
-1. fix the clear interval when it displays correct answer
-2. fix giant radio buttons
-3. make game restart with button click
-3. make it look less ugly
-4. indent everything properly
+- fix the clear interval when it displays correct answer
+- fix giant radio buttons
+- make game restart with button click
+- make it look less ugly
+- indent everything properly
+- remove this
 */
