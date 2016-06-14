@@ -58,9 +58,9 @@ $(document).ready(function() {
 	//click handler for replay button, need to reset all values to zero for next game
 	$('#replaygame').on('click', function () {
 	    index = 0;
-	    correct = 0; 
-	   wrong = 0;
-	   unanswered = 0;
+	    correct = 0;
+	    wrong = 0;
+	    unanswered = 0;
 	    startGame();
 	    $(this).hide();
     });
