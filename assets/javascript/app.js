@@ -59,8 +59,8 @@ $(document).ready(function() {
 	$('#replaygame').on('click', function () {
 	    index = 0;
 	    correct = 0; 
-	 wrong = 0;
-	 unanswered = 0;
+	   wrong = 0;
+	   unanswered = 0;
 	    startGame();
 	    $(this).hide();
     });
