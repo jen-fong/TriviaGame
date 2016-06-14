@@ -135,8 +135,8 @@ $(document).ready(function() {
 	        $('#show-time').html('<h2>Time remaining for question: ' + time + '</h2>'); 
 	        if (time === 0){
 		        unanswered++;
-				$('#unanswered').html('<h3>' + unanswered + '</h3>');
-				$('.choicesarea').html('The correct answer is ' + answer + '!');
+			$('#unanswered').html('<h3>' + unanswered + '</h3>');
+			$('.choicesarea').html('The correct answer is ' + answer + '!');
 				clearInterval(questionCounter);
 				time = 10;
 				index++;
